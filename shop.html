@@ -97,15 +97,15 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#" class="active">All</a></li>
-    					<li><a href="#">Vegetables</a></li>
-    					<li><a href="#">Fruits</a></li>
-    					<li><a href="#">Juice</a></li>
-    					<li><a href="#">Dried</a></li>
+    					<li><a href="#" class="active" onclick="selectOption('InitialContent',this); renderProductos()">All</a></li>
+    					<li><a href="#" onclick="selectOption('InitialContent',this); renderProductosByCategory('Vegetable')">Vegetables</a></li>
+    					<li><a href="#" onclick="selectOption('InitialContent',this); renderProductosByCategory('Fruit')">Fruits</a></li>
+    					<li><a href="#" onclick="selectOption('InitialContent',this); renderProductosByCategory('Juice')">Juice</a></li>
+    					<li><a href="#" onclick="selectOption('InitialContent',this); renderProductosByCategory('Dried')">Dried</a></li>
     				</ul>
     			</div>
     		</div>
-    		<div class="row">
+    		<div class="row" id="InitialContent">
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
@@ -581,6 +581,9 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/Products.js"></script>
+  <script src="js/controller.js"></script>
+  
     
   </body>
 </html>
