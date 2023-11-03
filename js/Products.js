@@ -1,5 +1,5 @@
  
-  var productosDatos = [
+  var productsData = [
     {
         "id": 1,
         "name": "Bell Pepper",
