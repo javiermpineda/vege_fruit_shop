@@ -1,5 +1,5 @@
- 
-  var productsData = [
+
+var productsData = [
     {
         "id": 1,
         "name": "Bell Pepper",
@@ -10,7 +10,7 @@
     {
         "id": 2,
         "name": "Strawberry",
-        "price": 120.00,
+        "price": 10.00,
         "imageURL": "images/product-2.jpg",
         "category": "Fruit"
     },
