@@ -11297,7 +11297,7 @@ h5,
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-.product-category li a.active {
+.product-category li a.active:hover {
   background: #82ae46;
   color: #fff;
 }
