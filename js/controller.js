@@ -52,7 +52,7 @@ function renderProductos() {
                             <span><i class="ion-ios-menu"></i></span>
                         </a>
                         <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                            <span><i class="ion-ios-cart"></i></span>
+                            <span><i class="ion-ios-cart" onclick="addCart(products[${i}])"></i></span>
                         </a>
                         <a href="#" class="heart d-flex justify-content-center align-items-center ">
                             <span><i class="ion-ios-heart"></i></span>
@@ -248,3 +248,11 @@ function showValue() {
     rangeValue.textContent = rangeInput.value;
 }
 renderProductos()
+
+function addCart(product){
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Add the product to the cart
+    cart.push(product);
+    // Save the updated cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+}

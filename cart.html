@@ -108,48 +108,8 @@
 						        <th>Total</th>
 						      </tr>
 						    </thead>
-						    <tbody>
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Bell Pepper</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
-						        </td>
-						        
-						        <td class="price">$4.90</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total">$4.90</td>
-						      </tr><!-- END TR-->
+						    <tbody id="cartContent">
 
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Bell Pepper</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
-						        </td>
-						        
-						        <td class="price">$15.70</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total">$15.70</td>
-						      </tr><!-- END TR-->
 						    </tbody>
 						  </table>
 					  </div>
@@ -367,7 +327,64 @@
 		    });
 		    
 		});
-	</script>
+		window.onload = renderCart();
+		function renderCart() {
+			let cart = JSON.parse(localStorage.getItem('cart'));
+			let cartContent = document.getElementById('cartContent');
+			let cartItems = {};
+
+			// Group cart items by product ID
+			cart.forEach((item) => {
+				if (cartItems[item.id]) {
+					cartItems[item.id].quantity += 1;
+				} else {
+					cartItems[item.id] = { ...item, quantity: 1 };
+				}
+			});
+			// Clear existing content
+			cartContent.innerHTML = '';
+			for (let key in cartItems) {
+				const item = cartItems[key];
+				// Create a new row for the grouped product
+				let row = document.createElement('tr');
+				row.className = 'text-center';
+
+				// Create table data cells
+				let removeCell = document.createElement('td');
+				removeCell.className = 'product-remove';
+				removeCell.innerHTML = '<a href="#"><span class="ion-ios-close"></span>';
+				row.appendChild(removeCell);
+
+				let imageCell = document.createElement('td');
+				imageCell.className = 'image-prod';
+				imageCell.innerHTML = '<div class="img" style="background-image:url(' + item.imageURL + ');"></div>';
+				row.appendChild(imageCell);
+
+				let nameCell = document.createElement('td');
+				nameCell.className = 'product-name';
+				nameCell.innerHTML = '<h3>' + item.name + '</h3><p>' + item.description + '</p>';
+				row.appendChild(nameCell);
+
+				let priceCell = document.createElement('td');
+				priceCell.className = 'price';
+				priceCell.innerText = '$' + (item.price).toFixed(2);
+				row.appendChild(priceCell);
+
+				let quantityCell = document.createElement('td');
+				quantityCell.className = 'quantity';
+				quantityCell.innerHTML = '<div class="input-group mb-3"><input type="text" name="quantity" class="quantity form-control input-number" value="' + item.quantity + '" min="1" max="100"></div>';
+				row.appendChild(quantityCell);
+
+				let totalCell = document.createElement('td');
+				totalCell.className = 'total';
+				totalCell.innerText = '$' + (item.price * item.quantity).toFixed(2);
+				row.appendChild(totalCell);
+
+				cartContent.appendChild(row);
+			}
+		}
+
+  </script>
     
   </body>
 </html>
