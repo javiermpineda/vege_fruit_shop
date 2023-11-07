@@ -197,16 +197,18 @@ function renderProductosByCategoryPrice() {
     });
 }
 
-function search_products(){
+function search_products() {
     let result;
     let search = document.getElementById('searcher');
     result = products.filter(products => products.name.toLowerCase().includes(search.value.toLowerCase()))
     document.getElementById('InitialContent').innerHTML = '';
 
-    if(search.value != '')
-    for(let i=0; i< result.length; i++){
-        document.getElementById('InitialContent').innerHTML += 
-        ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+    if (search.value == '') {
+        renderProductos();
+    } else {
+        for (let i = 0; i < result.length; i++) {
+            document.getElementById('InitialContent').innerHTML +=
+                ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
             <a href="#" class="img-prod"><img class="img-fluid" src="${result[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
@@ -234,9 +236,9 @@ function search_products(){
             </div>
         </div>
      </div>`
+        }
+
     }
-
-
 
 }
 
@@ -249,7 +251,7 @@ function showValue() {
 }
 renderProductos()
 
-function addCart(product){
+function addCart(product) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     // Add the product to the cart
     cart.push(product);
