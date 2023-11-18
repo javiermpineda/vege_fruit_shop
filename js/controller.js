@@ -48,11 +48,11 @@ function renderProductos() {
                 </div>
                 <div class="bottom-area d-flex px-3">
                     <div class="m-auto d-flex">
-                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                        <a href="#" class="buy-now d-flex justify-content-center align-items-center text-center data-product-id = ${products[i].id}">
                             <span><i class="ion-ios-menu"></i></span>
                         </a>
-                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                            <span><i class="ion-ios-cart" onclick="addCart(products[${i}])"></i></span>
+                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center mx-1" data-product-id = "${products[i].id}">
+                            <span><i class="ion-ios-cart"></i></span>
                         </a>
                         <a href="#" class="heart d-flex justify-content-center align-items-center ">
                             <span><i class="ion-ios-heart"></i></span>
@@ -197,18 +197,16 @@ function renderProductosByCategoryPrice() {
     });
 }
 
-function search_products() {
+function search_products(){
     let result;
     let search = document.getElementById('searcher');
     result = products.filter(products => products.name.toLowerCase().includes(search.value.toLowerCase()))
     document.getElementById('InitialContent').innerHTML = '';
 
-    if (search.value == '') {
-        renderProductos();
-    } else {
-        for (let i = 0; i < result.length; i++) {
-            document.getElementById('InitialContent').innerHTML +=
-                ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+    if(search.value != '')
+    for(let i=0; i< result.length; i++){
+        document.getElementById('InitialContent').innerHTML += 
+        ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
             <a href="#" class="img-prod"><img class="img-fluid" src="${result[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
@@ -236,9 +234,9 @@ function search_products() {
             </div>
         </div>
      </div>`
-        }
-
     }
+
+
 
 }
 
@@ -250,11 +248,3 @@ function showValue() {
     rangeValue.textContent = rangeInput.value;
 }
 renderProductos()
-
-function addCart(product) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Add the product to the cart
-    cart.push(product);
-    // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
