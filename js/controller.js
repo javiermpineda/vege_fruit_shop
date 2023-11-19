@@ -203,7 +203,7 @@ function search_products(){
     result = products.filter(products => products.name.toLowerCase().includes(search.value.toLowerCase()))
     document.getElementById('InitialContent').innerHTML = '';
 
-    if(search.value != '')
+    if(search.value != ' ')
     for(let i=0; i< result.length; i++){
         document.getElementById('InitialContent').innerHTML += 
         ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
