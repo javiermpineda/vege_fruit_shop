@@ -7,7 +7,7 @@ if (!localStorage.getItem('products')) {
 let products = JSON.parse(localStorage.getItem('products'));
 
 
-let valueCategory = '';
+let valueCategory = ' ';
 function selectOption(id, menuOption) {
     document.getElementById('InitialContent').style.display = 'none';
     document.getElementById(id).style.display = 'flex';
