@@ -4,6 +4,9 @@
  });
 
 (function($) {
+		const urlParams = new URLSearchParams(window.location.search);
+    const data = urlParams.get('data');
+    cart = [JSON.parse(decodeURIComponent(data))];
 
 	"use strict";
 
@@ -340,7 +343,7 @@
 
 setInterval(function() { makeTimer(); }, 1000);
 
-
+startCart();
 
 })(jQuery);
 
