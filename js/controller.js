@@ -80,10 +80,10 @@ function renderProductosByCategory(category) {
     valueCategory = category;
     let productsByCategory = products.filter(products => products.category == category);
 
-
+console.log("sdfsfsdf"+productsByCategory)
     document.getElementById('InitialContent').innerHTML = '';
 
-
+console.log(productsByCategory)
     for (let i = 0; i < productsByCategory.length; i++) {
 
         document.getElementById('InitialContent').innerHTML +=
@@ -91,7 +91,7 @@ function renderProductosByCategory(category) {
 
     <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" src="${productsByCategory[i].imageURL}" alt="Colorlib Template">
+            <a href="product-single.html?id=${productsByCategory[i].id}" class="img-prod"><img class="img-fluid" src="${productsByCategory[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
@@ -156,7 +156,7 @@ function renderProductosByCategoryPrice() {
 
     <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" src="${renderProductosByCategoryPrice[i].imageURL}" alt="Colorlib Template">
+            <a href="product-single.html?id=${renderProductosByCategoryPrice[i].id}" class="img-prod"><img class="img-fluid" src="${renderProductosByCategoryPrice[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
@@ -203,12 +203,14 @@ function search_products(){
     result = products.filter(products => products.name.toLowerCase().includes(search.value.toLowerCase()))
     document.getElementById('InitialContent').innerHTML = '';
 
+
     if(search.value != ' ')
     for(let i=0; i< result.length; i++){
+
         document.getElementById('InitialContent').innerHTML += 
         ` <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" src="${result[i].imageURL}" alt="Colorlib Template">
+            <a href="product-single.html?id=${result[i].id}" class="img-prod"><img class="img-fluid" src="${result[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
