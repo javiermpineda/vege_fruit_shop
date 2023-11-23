@@ -26,7 +26,7 @@ $(document).ready(function () {
     }
 
     // Función para actualizar la cantidad total del carrito y mostrarla
-    function updateCartTotal() {
+    function updateCartTotal(quatityProduct)) {
         let total = Object.values(cart).reduce((a, b) => a + b, 0);
         $('.cart-count').text(`[${total}]`);
         console.log(total);
