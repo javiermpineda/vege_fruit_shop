@@ -36,7 +36,7 @@ function renderProductos() {
 
     <div  class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" src="${products[i].imageURL}" alt="Colorlib Template">
+            <a href="product-single.html?id=${products[i].id}" class="img-prod"><img class="img-fluid" src="${products[i].imageURL}" alt="Colorlib Template">
                 <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
