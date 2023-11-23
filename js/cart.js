@@ -1,5 +1,7 @@
 // Inicializar el carrito desde el localStorage al cargar la página
 
+//This is a new comment
+
 $(document).ready(function () {
     var cart = JSON.parse(localStorage.getItem('cart')) || {};
     var products = JSON.parse(localStorage.getItem('products')) || [];
