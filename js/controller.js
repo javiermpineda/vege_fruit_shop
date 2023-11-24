@@ -26,6 +26,8 @@ function renderProductosByCategory(category) {
     let productsByCategory = products.filter(p => p.category === category);
     console.log("sdfsfsdf"+productsByCategory)
     appendProductHTML(productsByCategory);
+    recargarScript('js/cart.js');
+
 }
 
 function renderProductosByCategoryPrice() {
@@ -43,6 +45,7 @@ function renderProductosByCategoryPrice() {
     console.log('Filtered Products:', filteredProducts);
 
     appendProductHTML(filteredProducts);
+    recargarScript('js/cart.js');
 }
 
 
@@ -52,9 +55,18 @@ function search_products() {
 
     if (searchValue !== ' ') {
         appendProductHTML(result);
+        recargarScript('js/cart.js');
     }
+    recargarScript('js/cart.js');
 }
 
+const rangeInput = document.getElementById('rangeInput');
+const rangeValue = document.getElementById('rangeValue');
+rangeInput.addEventListener('input', showValue)
+
+function showValue() {
+    rangeValue.textContent = rangeInput.value;
+}
 
 
 function appendProductHTML(productsToRender) {
@@ -110,15 +122,19 @@ function appendProductHTML(productsToRender) {
     $('.menu-option').removeClass('active');
 }
 
-
-const rangeInput = document.getElementById('rangeInput');
-const rangeValue = document.getElementById('rangeValue');
-rangeInput.addEventListener('input', showValue)
-
-function showValue() {
-    rangeValue.textContent = rangeInput.value;
+function recargarScript(nombreScript) {
+    var scriptActual = document.querySelector('script[src="js/cart.js"]');
+    var nuevoScript = document.createElement('script');
+    nuevoScript.src = nombreScript;
+    scriptActual.parentNode.replaceChild(nuevoScript, scriptActual);
 }
+
+
+
+
 $(document).ready(function() {
     renderProductos();
 });
+
+
 
