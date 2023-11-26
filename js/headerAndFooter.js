@@ -55,5 +55,32 @@ $(document).ready(function () {
         '          </div>\n' +
         '        </div>\n' +
         '      </div>\n' +
-        '    </footer>'
+        '    </footer>';
+
+    document.getElementById('navigation').innerHTML += '    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">\n' +
+        '\t    <div class="container">\n' +
+        '\t      <a class="navbar-brand" href="index.html">Vegefoods</a>\n' +
+        '\t      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">\n' +
+        '\t        <span class="oi oi-menu"></span> Menu\n' +
+        '\t      </button>\n' +
+        '\n' +
+        '\t      <div class="collapse navbar-collapse" id="ftco-nav">\n' +
+        '\t        <ul class="navbar-nav ml-auto">\n' +
+        '\t          <li class="nav-item dropdown">\n' +
+        '              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>\n' +
+        '              <div class="dropdown-menu" aria-labelledby="dropdown04">\n' +
+        '              \t<a class="dropdown-item" href="shop.html">Shop</a>\n' +
+        '              \t<a class="dropdown-item" href="wishlist.html">Wishlist</a>\n' +
+        '                <a class="dropdown-item" href="login.html">Login</a>\n' +
+        '              </div>\n' +
+        '            </li>\n' +
+        '\t          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>\n' +
+        '\t          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>\n' +
+        '\t          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>\n' +
+        '\t          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span><span class="cart-count">[0]</span></a></li>\n' +
+        '\n' +
+        '\t        </ul>\n' +
+        '\t      </div>\n' +
+        '\t    </div>\n' +
+        '\t  </nav>\n';
 })
