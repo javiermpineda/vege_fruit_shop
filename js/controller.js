@@ -26,7 +26,7 @@ function renderProductosByCategory(category) {
     let productsByCategory = products.filter(p => p.category === category);
     console.log("sdfsfsdf"+productsByCategory)
     appendProductHTML(productsByCategory);
-    recargarScript('js/cart.js');
+   
 
 }
 
@@ -45,7 +45,7 @@ function renderProductosByCategoryPrice() {
     console.log('Filtered Products:', filteredProducts);
 
     appendProductHTML(filteredProducts);
-    recargarScript('js/cart.js');
+   
 }
 
 
@@ -55,9 +55,9 @@ function search_products() {
 
     if (searchValue !== ' ') {
         appendProductHTML(result);
-        recargarScript('js/cart.js');
+        
     }
-    recargarScript('js/cart.js');
+   
 }
 
 const rangeInput = document.getElementById('rangeInput');
@@ -122,12 +122,7 @@ function appendProductHTML(productsToRender) {
     $('.menu-option').removeClass('active');
 }
 
-function recargarScript(nombreScript) {
-    var scriptActual = document.querySelector('script[src="js/cart.js"]');
-    var nuevoScript = document.createElement('script');
-    nuevoScript.src = nombreScript;
-    scriptActual.parentNode.replaceChild(nuevoScript, scriptActual);
-}
+
 
 
 
