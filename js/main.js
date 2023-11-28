@@ -343,7 +343,7 @@
 
 setInterval(function() { makeTimer(); }, 1000);
 
-startCart();
+
 
 })(jQuery);
 
