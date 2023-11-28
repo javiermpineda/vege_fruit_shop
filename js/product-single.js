@@ -14,7 +14,7 @@ productInfo.innerHTML = `
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 ftco-animate">
-          <a href="images/product-7.jpg" class="image-popup"
+          <a href="${infoSingleProduct[0].imageURL}" class="image-popup"
             ><img
               src="${infoSingleProduct[0].imageURL}"
               class="img-fluid"
