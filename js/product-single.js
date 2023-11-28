@@ -74,7 +74,7 @@ productInfo.innerHTML = `
             </div>
           </div>
           <p>
-            <a href="#" id="addToCartBtn" class="add-to-cart btn btn-black py-3 px-5"
+            <a href="#" id="addToCartBtn" class="add-to-cart btn btn-black py-3 px-5" data-product-id="${infoSingleProduct[0].id}"
               >Add to Cart</a
             >
           </p>
