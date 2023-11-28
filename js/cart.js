@@ -5,10 +5,28 @@ $(document).ready(function () {
     var products = JSON.parse(localStorage.getItem('products')) || [];
     // Mostrar la cantidad total del carrito al cargar la página
     updateCartTotal();
-    $(".add-to-cart").on("click", function (e) {
+    $("#InitialContent .add-to-cart").on("click", function (e) {
         e.preventDefault();
+        console.log("InitialContent");
         const productId = $(this).data("product-id");
         cart[productId] = cart[productId] ? ++cart[productId] : 1;
+        console.log(cart)
+
+        // Guardar el carrito en el localStorage después de cada modificación
+        saveCartToLocalStorage();
+
+        // Actualizar la cantidad total del carrito y mostrarla
+        updateCartTotal();
+    });
+
+    $("#productInfo .add-to-cart").on("click", function (e) {
+        e.preventDefault();
+        console.log("productInfo");
+        // Obtener el valor del input quantity
+        var quantityValue = parseInt($("#quantity").val(), 10);
+
+        const productId = $(this).data("product-id");
+        cart[productId] = cart[productId] ? cart[productId]+ quantityValue: quantityValue;
         console.log(cart)
 
         // Guardar el carrito en el localStorage después de cada modificación
