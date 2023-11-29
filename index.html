@@ -74,7 +74,9 @@
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span><span class="cart-count">[0]</span></a></li>
-
+            <li class="nav-item cta cta-colored">
+              <a href="login.html" class="nav-link" style="font-size: 10PX; ">
+                <span class="icon-user">-LOGIN</span></a></li> 
 	        </ul>
 	      </div>
 	    </div>
@@ -474,6 +476,20 @@
   <script src="js/google-map.js"></script>
   <script src="js/Products.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var userName = localStorage.getItem('userName');
+      
+      if (userName) {
+          var userNameElement = document.querySelector('.icon-user'); 
+  
+          if (userNameElement) {
+              userNameElement.textContent = userName;
+          }
+      }
+  });
+  </script>  
+
+
   </body>
 </html>
