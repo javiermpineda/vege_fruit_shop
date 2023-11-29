@@ -5,7 +5,7 @@ $(document).ready(function () {
     var products = JSON.parse(localStorage.getItem('products')) || [];
     // Mostrar la cantidad total del carrito al cargar la página
     updateCartTotal();
-    $("#InitialContent .add-to-cart").on("click", function (e) {
+    $(document).on("click", '#InitialContent .add-to-cart', function (e) {
         e.preventDefault();
         console.log("InitialContent");
         const productId = $(this).data("product-id");
