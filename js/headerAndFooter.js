@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function loadGenericHeader() {
     document.getElementById('header').innerHTML += 
     `
     <div class="py-1 bg-primary">
@@ -43,7 +43,8 @@ $(document).ready(function () {
 	    </div>
 	  </nav>
     `;
-    
+    }
+function loadGenericFooter(){
     document.getElementById('footer').innerHTML += 
     `
 
@@ -121,4 +122,4 @@ $(document).ready(function () {
       </div>
     </footer>
     `;
-})
+}

@@ -1,14 +1,16 @@
+import { productsData } from './Products.js';
+
 if (!localStorage.getItem('products')) {
     localStorage.setItem('products', JSON.stringify(productsData))
 }
 
-let products = JSON.parse(localStorage.getItem('products'));
 
 let valueCategory = ' ';
 
 
 
 function renderProductos() {
+    let products = productsData;
     appendProductHTML(products);
 }
 

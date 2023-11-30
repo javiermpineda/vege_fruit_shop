@@ -1,8 +1,10 @@
-if (!localStorage.getItem('products')) {
-    localStorage.setItem('products', JSON.stringify(productsData))
-}
+import { commonData } from './Products.js';
 
-let products = JSON.parse(localStorage.getItem('products'));
+let products = commonData.getItem('products');
+if (typeof products === 'string') {
+    // Parse the string into an array
+    products = JSON.parse(products);
+}
 
 let valueCategory = ' ';
 
@@ -12,11 +14,9 @@ function selectOption(id, menuOption) {
     $('.menu-option').removeClass('active');
     $(menuOption).addClass('active');
 }
-
 function renderProductos() {
     appendProductHTML(products);
 }
-
 function renderProductosByCategory(category) {
     valueCategory = category;
     let productsByCategory = products.filter(p => p.category === category);
@@ -70,7 +70,8 @@ function appendProductHTML(productsToRender) {
             priceTag = `<p class="price"><span class="mr-2 price-dc">$${product.price.toFixed(2)}</span><span class="price-sale">$${discountedPrice.toFixed(2)}</span></p>`;
             discountTag = `<span class="status">${product.discount}%</span>`;
         } else {
-            priceTag = `<p class="price"><span>$${product.price.toFixed(2)}</span></p>`;
+            priceTag = `<p class="price"><parseFloat></parseFloat>
+            <product className="price"></product><span>${product.price.toFixed(2)}</span></p>`;
             discountTag = ' ';
         }
 
