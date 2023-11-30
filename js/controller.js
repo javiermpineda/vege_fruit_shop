@@ -21,8 +21,6 @@ function renderProductosByCategory(category) {
     valueCategory = category;
     let productsByCategory = products.filter(p => p.category === category);
     appendProductHTML(productsByCategory);
-    recargarScript('js/cart.js');
-
 }
 
 function renderProductosByCategoryPrice() {
@@ -38,7 +36,7 @@ function renderProductosByCategoryPrice() {
     }
 
     appendProductHTML(filteredProducts);
-    recargarScript('js/cart.js');
+    
 }
 
 function search_products() {
@@ -47,9 +45,9 @@ function search_products() {
 
     if (searchValue !== ' ') {
         appendProductHTML(result);
-        recargarScript('js/cart.js');
+        
     }
-    recargarScript('js/cart.js');
+
 }
 
 const rangeInput = document.getElementById('rangeInput');
@@ -92,15 +90,11 @@ function appendProductHTML(productsToRender) {
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="product-single.html?id=${product.id}" class="display-product-detail d-flex justify-content-center align-items-center text-center" data-product-id="${product.id}">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
+                               
                                 <a href="#" class="add-to-cart d-flex justify-content-center align-items-center mx-1" data-product-id="${product.id}">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
+                                
                             </div>
                         </div>
                     </div>
@@ -112,12 +106,7 @@ function appendProductHTML(productsToRender) {
     $('.menu-option').removeClass('active');
 }
 
-function recargarScript(nombreScript) {
-    var scriptActual = document.querySelector('script[src="js/cart.js"]');
-    var nuevoScript = document.createElement('script');
-    nuevoScript.src = nombreScript;
-    scriptActual.parentNode.replaceChild(nuevoScript, scriptActual);
-}
+
 
 $(document).ready(function () {
     renderProductos();
