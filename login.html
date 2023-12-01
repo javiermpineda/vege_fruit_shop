@@ -157,12 +157,12 @@
 					<label for="customer_firstname">First name 
 						<sup>*</sup>
 					</label> 
-					<input onkeyup="$('#firstname').val(this.value);" type="text" class="is_required validate form-control" data-validate="isName" id="customer_firstname" name="customer_firstname" value="">
+					<input onkeyup="$('#customer_firstname').val(this.value);" type="text" class="is_required validate form-control" data-validate="isName" id="customer_firstname" name="customer_firstname" value="">
 				</div>
 				<div class="required form-group"> 
 					<label for="customer_lastname">Last name 
 						<sup>*</sup>
-					</label> <input onkeyup="$('#lastname').val(this.value);" type="text" class="is_required validate form-control" data-validate="isName" id="customer_lastname" name="customer_lastname" value=""></div>
+					</label> <input onkeyup="$('#customer_lastname').val(this.value);" type="text" class="is_required validate form-control" data-validate="isName" id="customer_lastname" name="customer_lastname" value=""></div>
 
 
 					<div class="required form-group"> 
@@ -338,7 +338,7 @@
     <input type="hidden" name="email_create" value="1"> 
     <input type="hidden" name="is_new_customer" value="1"> 
     <input type="hidden" class="hidden" name="back" value="my-account">
-    <button type="submit" name="submitAccount" id="submitAccount" class="btn btn-default button button-medium" onclick="handleRegistration()">
+    <button type="submit" name="submitAccount" id="submitAccount" class="btn btn-default button button-medium">
         <span>Register<i class="icon-chevron-right right"></i></span> 
     </button>
 </div>
@@ -379,7 +379,7 @@
 					        <br>
 					      </div>
 					      <div class="button_class">
-					        <button onclick="copiarTexto()" class="btn btn-default button button-medium exclusive" type="submit" id="SubmitCreate" name="SubmitCreate"> <span> <i class="icon-user left"></i> Create an account </span> </button>
+					        <button class="btn btn-default button button-medium exclusive" type="submit" id="SubmitCreate" name="SubmitCreate"> <span> <i class="icon-user left"></i> Create an account </span> </button>
 					        </div>
 					    </form>
 					</div>
@@ -396,7 +396,7 @@
 						<p class="title">Get our latest news and special sales</p>
 						<form action="//www.coeos.pro/es/" method="post">
 							<div class="form-group"> 
-								<input id="newsletter-input" class="newsletter-text form-control" type="text" name="email" size="18" value="Introduzca su dirección de correo electrónico"> 
+								<input id="newsletter-input" class="newsletter-text form-control" type="text" name="email" size="18" value="Add your email address"> 
 								<button type="submit" name="submitNewsletter" class="newsletter-btn font-send"> 
 								</button> 
 								<input type="hidden" name="action" value="0">
@@ -519,6 +519,20 @@
 </div>
 
 </div>
- <script src="js/loginvegie.js"></script>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+	<script type="module" src="js/loginvegie.js" defer></script>
 </body>
 </html>

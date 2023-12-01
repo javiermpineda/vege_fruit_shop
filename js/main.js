@@ -16,7 +16,16 @@ AOS.init({
 	}
 	if (!commonData.getItem('products')) {
 		commonData.setItem('products', JSON.stringify(productsData));
+	}else{
+		commonData.setItem('products',productsData);
+
 	}
+	if (!commonData.getItem('userName')) {
+		commonData.setItem('userName', "Login");
+	}
+	var userName = commonData.getItem('userName');
+	console.log("Loading userName; ",userName);
+	$("#icon-user").text(userName);
 
 	"use strict";
 

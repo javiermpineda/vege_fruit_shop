@@ -1,7 +1,10 @@
+import { productsData } from './Products.js';
+
 const productInfo = document.getElementById("productInfo");
 
 let urlParams = new URLSearchParams(window.location.search);
 var receivedId = urlParams.get('id');
+
 
 if (receivedId == null) {
   receivedId = 1;
