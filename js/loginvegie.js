@@ -95,7 +95,7 @@ $(document).ready(function () {
       optin: $("#optin").prop("checked"),
       State: $("#customer_State").val(),
       StreetAddress: $("#customer_Street_Address").val(),
-      customer: $("#customer_apartment").val(),
+      Apartment: $("#customer_apartment").val(),
       Town: $("#customer_Town").val(),
       Postcode: $("#customer_Postcode").val(),
       Phone: $("#Customer_Phone").val(),
