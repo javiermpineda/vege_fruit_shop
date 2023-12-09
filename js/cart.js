@@ -5,6 +5,7 @@ $(document).ready(function () {
     var products = JSON.parse(localStorage.getItem('products')) || [];
     // Mostrar la cantidad total del carrito al cargar la página
     updateCartTotal();
+
     $(document).on("click", '#InitialContent .add-to-cart', function (e) {
         e.preventDefault();
         console.log("InitialContent");
@@ -26,7 +27,7 @@ $(document).ready(function () {
         var quantityValue = parseInt($("#quantity").val(), 10);
 
         const productId = $(this).data("product-id");
-        cart[productId] = cart[productId] ? cart[productId]+ quantityValue: quantityValue;
+        cart[productId] = cart[productId] ? cart[productId] + quantityValue : quantityValue;
         console.log(cart)
 
         // Guardar el carrito en el localStorage después de cada modificación
@@ -46,6 +47,7 @@ $(document).ready(function () {
         let total = Object.values(cart).reduce((a, b) => a + b, 0);
         $('.cart-count').text(`[${total}]`);
         console.log(total);
+        calculateTotal();
     }
 
     // Función para mostrar los productos del carrito en la tabla
@@ -56,38 +58,45 @@ $(document).ready(function () {
         // Limpiar el contenido actual de la tabla
         tbody.empty();
 
-        // Recorrer los productos en el carrito
-        for (let productId in cart) {
-            if (cart.hasOwnProperty(productId)) {
-                // Obtener el producto correspondiente (puedes obtenerlo de tu fuente de datos original)
-                var product = getProductById(productId);
+        // Verificar si el carrito está vacío
+        if (Object.keys(cart).length === 0) {
+            // Agregar una fila que indique que no hay elementos en el carrito
+            tbody.append("<tr><td colspan='6' class='text-center'>There are no items in your cart</td></tr>");
+        } else {
 
-                // Crear una nueva fila para el producto
-                var row = $("<tr class='text-center'></tr>");
+            // Recorrer los productos en el carrito
+            for (let productId in cart) {
+                if (cart.hasOwnProperty(productId)) {
+                    // Obtener el producto correspondiente (puedes obtenerlo de tu fuente de datos original)
+                    var product = getProductById(productId);
 
-                row.data("product-id", productId); // Almacena el ID del producto en el atributo data
+                    // Crear una nueva fila para el producto
+                    var row = $("<tr class='text-center'></tr>");
 
-                // Columna para el botón de eliminar
-                row.append("<td class='product-remove' ><a href='#'><span class='ion-ios-close'></span></a></td>");
+                    row.data("product-id", productId); // Almacena el ID del producto en el atributo data
 
-                // Columna para la imagen del producto
-                row.append(`<td class='image-prod'><div class='img' style='background-image:url(${product.imageURL});'></div></td>`);
+                    // Columna para el botón de eliminar
+                    row.append("<td class='product-remove' ><a href='#'><span class='ion-ios-close'></span></a></td>");
 
-                // Columna para el nombre del producto
-                row.append("<td class='product-name'><h3>" + product.name + "</h3><p>" + product.description + "</p></td>");
+                    // Columna para la imagen del producto
+                    row.append(`<td class='image-prod'><div class='img' style='background-image:url(${product.imageURL});'></div></td>`);
 
-                // Columna para el precio
-                row.append("<td class='price'>$" + product.price.toFixed(2) + "</td>");
+                    // Columna para el nombre del producto
+                    row.append("<td class='product-name'><h3>" + product.name + "</h3><p>" + product.description + "</p></td>");
 
-                // Columna para la cantidad (con un campo de entrada)
-                row.append("<td class='quantity'><div class='input-group mb-3'><input type='number' name='quantity' class='quantity form-control input-number' value='" + cart[productId] + "' min='1' max='100'></div></td>");
+                    // Columna para el precio
+                    row.append("<td class='price'>$" + product.price.toFixed(2) + "</td>");
 
-                // Columna para el total (precio * cantidad)
-                var total = product.price * cart[productId];
-                row.append("<td class='total'>$" + total.toFixed(2) + "</td>");
+                    // Columna para la cantidad (con un campo de entrada)
+                    row.append("<td class='quantity'><div class='input-group mb-3'><input type='number' name='quantity' class='quantity form-control input-number' value='" + cart[productId] + "' min='1' max='100'></div></td>");
 
-                // Agregar la fila al cuerpo de la tabla
-                tbody.append(row);
+                    // Columna para el total (precio * cantidad)
+                    var total = product.price * cart[productId];
+                    row.append("<td class='total'>$" + total.toFixed(2) + "</td>");
+
+                    // Agregar la fila al cuerpo de la tabla
+                    tbody.append(row);
+                }
             }
         }
     }
@@ -171,6 +180,39 @@ $(document).ready(function () {
             // Actualiza la cantidad total del carrito y muestra la tabla actualizada
             updateCartTotal();
         }
+    }
+
+    // Calcular Total Checkout
+    function calculateTotal() {
+
+        var Subtotal = 0;
+        var Discount = 0;
+        for (var productId in cart) {
+            if (cart.hasOwnProperty(productId)) {
+                var quantity = cart[productId];
+                var product = products.find(p => p.id == productId);
+                if (product) {
+                    Subtotal += product.price * quantity;
+                    Discount += (product.price * product.discount / 100) * quantity;
+                }
+            }
+        }
+
+        var Delivery = (Subtotal !== 0) ? 10 : 0;
+
+        var Total = Subtotal - Discount + Delivery;
+
+        localStorage.setItem('Subtotal', Subtotal.toFixed(2));
+        localStorage.setItem('Discount', Discount.toFixed(2));
+        localStorage.setItem('Delivery', Delivery.toFixed(2));
+        localStorage.setItem('Total', Total.toFixed(2));
+
+        // Asignar los valores a los elementos HTML
+        $("#Subtotal").text("$" + Subtotal.toFixed(2));
+        $("#Discount").text("$" + Discount.toFixed(2));
+        $("#Delivery").text("$" + Delivery.toFixed(2));
+        $("#Total").text("$" + Total.toFixed(2));
+
     }
 
 });
