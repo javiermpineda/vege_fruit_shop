@@ -35,7 +35,8 @@ $(document).ready(function () {
 			<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 			<li class="nav-item"><a href="wishlist.html" class="nav-link">Wishlist</a></li>
 			<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-			<li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+			<li class="nav-item"><a href="login.html" class="nav-link" id="login">Login</a></li>
+			<li class="nav-item"><a href="login.html" class="nav-link" id="logout">Log Out</a></li>
 			<li class="nav-item"><a href="login.html" class="nav-link">Order</a></li>
 			<li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span><span class="cart-count">[0]</span></a></li>
 	        </ul>
